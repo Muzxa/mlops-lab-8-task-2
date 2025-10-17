@@ -1,0 +1,16 @@
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - params.yaml
+      - data/house_prices.csv
+    params:
+      - seed
+      - test_size
+      - model.n_estimators
+      - model.max_depth
+    outs:
+      - models/house_price_model.pkl
+    metrics:
+      - models/metrics.json
