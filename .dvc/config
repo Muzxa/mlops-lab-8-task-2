@@ -1,0 +1,4 @@
+[core]
+    remote = localremote
+['remote "localremote"']
+    url = /Users/muzzammil/University/Semester 5/MLOps/Lab/MLOps Lab 8/dvc_remote
