@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import joblib
+import json, os
 
 # 1. Load dataset
 df = pd.read_csv("data/house_prices.csv")  
@@ -93,6 +94,10 @@ joblib.dump(model, os.path.join(OUTPUT_DIR, "house_price_model.pkl"))
 joblib.dump(features_list, os.path.join(OUTPUT_DIR, "model_features.pkl"))
 joblib.dump(encoders, os.path.join(OUTPUT_DIR, "label_encoders.pkl"))
 joblib.dump(feature_field_map, os.path.join(OUTPUT_DIR, "feature_field_map.pkl"))
+
+mse = mean_squared_error(y_test, y_pred)
+with open("models/metrics.json", "w") as f:
+    json.dump({"mse": mse}, f)
 
 print("Saved model and artifacts to", OUTPUT_DIR)
 print("Files:")
